@@ -15,13 +15,16 @@ class DataHandler:
     @st.cache_data
     def download_close(ticker, start, end):
         """Download stock price data and return Close prices."""
-        try:
-            df = yf.download(ticker, start=start, end=end, progress=False, auto_adjust=False, threads=False)
-            if df.empty:
-                return None
-            return df["Close"]
-        except Exception as e:
-            raise Exception(f"Error downloading data for {ticker}: {e}")
+        df = yf.download(ticker, start=start, end=end, progress=False, auto_adjust=False, threads=False)
+        return df["Close"]
+        # try:
+        #     df = yf.download(ticker, start=start, end=end, progress=False, auto_adjust=False, threads=False)
+        #     if df.empty:
+        #         return None
+        #     return df["Close"]
+        # except Exception as e:
+        #     raise Exception(f"Error downloading data for {ticker}: {e}")
+
 
 
     
