@@ -11,8 +11,8 @@ import random
 class DataHandler:
     """Handles data downloading and processing."""
     
-    @staticmethod
-    @st.cache_data(ttl=60)
+    # @staticmethod
+    @st.cache_data
     def download_close(ticker, start, end):
         """Download stock price data and return Close prices."""
         try:
