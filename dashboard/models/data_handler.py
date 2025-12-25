@@ -3,19 +3,15 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 from datetime import timedelta
-import requests_cache
 
 class DataHandler:
     """Handles data downloading and processing."""
-
+    
     @staticmethod
     def download_close(ticker, start, end):
         """Download stock price data and return Close prices."""
         try:
-            session = requests_cache.CachedSession('yfinance.cache')
-            session.headers['User-agent'] = 'Mozilla/5.0'
-
-            df = yf.download(ticker, start=start, end=end, progress=False, auto_adjust=False, threads=False, session=session)
+            df = yf.download(ticker, start=start, end=end, progress=False, auto_adjust=False, threads=False)
             if df.empty:
                 return None
             return df["Close"]

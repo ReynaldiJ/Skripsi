@@ -63,7 +63,6 @@ def get_overview_content():
     - Displays error metrics (MAPE, RMSE, MAE)
     
     **Supported Tickers:**
-    - US Stocks: AAPL, MSFT, GOOGL
     - Indonesian: BBCA.JK, BRMS.JK, AALI.JK
     - Any Yahoo Finance symbol
     """
