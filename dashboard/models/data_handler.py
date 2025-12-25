@@ -23,6 +23,7 @@ class DataHandler:
         except Exception as e:
             raise Exception(f"Error downloading data for {ticker}: {e}")
 
+
     
     @staticmethod
     def weekly_windows(prices):
