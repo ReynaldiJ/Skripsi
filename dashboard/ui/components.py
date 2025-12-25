@@ -59,7 +59,8 @@ def render_historical_tab(data_handler):
                         st.session_state.hist_data = {
                             'ticker': ticker,
                             'dates': [d.strftime('%Y-%m-%d') for d in prices.index],
-                            'prices': [float(p) for p in prices.values]
+                            'prices': prices.squeeze().astype(float).tolist()
+
                         }
                         st.success(f"Downloaded {len(prices)} data points")
                     else:

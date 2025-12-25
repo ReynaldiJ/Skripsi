@@ -18,7 +18,13 @@ class DataHandler:
         # df = yf.download(ticker, start=start, end=end, auto_adjust=False)
         # return df["Close"]
         try:
-            df = yf.download(ticker, start=start, end=end, progress=False, auto_adjust=False, threads=False)
+            df = yf.download(
+                ticker, 
+                start=start, 
+                end=end, 
+                progress=False, 
+                auto_adjust=False, 
+                threads=False)
             if df.empty:
                 return None
             return df["Close"]
