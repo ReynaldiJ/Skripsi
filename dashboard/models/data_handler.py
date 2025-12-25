@@ -2,6 +2,7 @@
 import yfinance as yf
 import pandas as pd
 import numpy as np
+import streamlit as st
 from datetime import timedelta
 import requests
 import time
@@ -11,18 +12,14 @@ class DataHandler:
     """Handles data downloading and processing."""
     
     @staticmethod
+    @st.cache_data(ttl=60)
     def download_close(ticker, start, end):
         """Download stock price data and return Close prices."""
         try:
-            t = yf.Ticker(ticker)
-            df = t.history(start=start, end=end, auto_adjust=False)
+            df = yf.download(ticker, start=start, end=end, progress=False, auto_adjust=False, threads=False)
             if df.empty:
                 return None
-            return df["Close"]  
-            # df = yf.download(ticker, start=start, end=end, progress=False, auto_adjust=False, threads=False)
-            # if df.empty:
-            #     return None
-            # return df["Close"]
+            return df["Close"]
         except Exception as e:
             raise Exception(f"Error downloading data for {ticker}: {e}")
 
